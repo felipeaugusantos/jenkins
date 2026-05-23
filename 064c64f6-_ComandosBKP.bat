@@ -1,4 +1,5 @@
 @ECHO OFF
+:: Versão: 30.72
 :: Deleta arquivos e subpastas da pasta de saída, preservando comandosCMD
 del /q "C:\VERSOES_FECHADAS\releaseversion\*.*"
 for /d %%D in ("C:\VERSOES_FECHADAS\releaseversion\*") do (
