@@ -771,6 +771,10 @@ powershell -NoProfile -Command "Get-ChildItem 'C:\VERSOES_FECHADAS\379.48.2.30.7
 CALL C:\VERSOES_FECHADAS\379.48.2.30.72.438\comandosCMD\__RodarPrimeiro.bat
 schtasks /run /tn 379.48.2.30.72.438_Principal
 
+:: Executa configurações e inicia o sistema da versão CLOUD
+CALL C:\VERSOES_FECHADAS\379.48.2.30.72.438_CLOUD\comandosCMD\__RodarPrimeiro.bat
+schtasks /run /tn 379.48.2.30.72.438_CLOUD_Principal
+
 :END
 if not exist "C:\VERSOES_FECHADAS\379.48.2.30.72.438\concluido.txt" (
 	java -jar "C:\Utilitarios\JenkinsJar\jenkins-cli.jar" -s http://localhost:8080/ console 379.48.2.30.72.438 -n 20 > C:\VERSOES_FECHADAS\379.48.2.30.72.438\erro.txt
