@@ -1,7 +1,9 @@
 @ECHO OFF
-:: Deleta tudo da pasta antes de iniciar uma nova geração
-rd /s /q "C:\VERSOES_FECHADAS\379.48.2.30.72.438"
-mkdir "C:\VERSOES_FECHADAS\379.48.2.30.72.438"
+:: Deleta arquivos e subpastas da pasta de saída, preservando comandosCMD
+del /q "C:\VERSOES_FECHADAS\379.48.2.30.72.438\*.*"
+for /d %%D in ("C:\VERSOES_FECHADAS\379.48.2.30.72.438\*") do (
+    if /i not "%%~nxD"=="comandosCMD" rd /s /q "%%D"
+)
 
 :: Faz o checkout através de linhas de comando do SVN
 svn checkout -q svn://srvprg1.citelsoftware.com.br/Padrao/027.18/27.18.379/379.48.02.REV.FECHADAs/379.48.02.30.FECHADAS/379.48.2.30.72.438 %WORKSPACE%
