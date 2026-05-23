@@ -759,7 +759,7 @@ echo concluido > C:\VERSOES_FECHADAS\379.48.2.30.72.438\concluido.txt
 xcopy /E /I /Y "C:\VERSOES_FECHADAS\379.48.2.30.72.438" "C:\VERSOES_FECHADAS\379.48.2.30.72.438_CLOUD\"
 
 :: Comenta o comando upx.exe nos .bat da pasta CLOUD\comandosCMD
-powershell -NoProfile -Command "Get-ChildItem 'C:\VERSOES_FECHADAS\379.48.2.30.72.438_CLOUD\comandosCMD' -Filter '*.bat' | ForEach-Object { (Get-Content $_.FullName).Replace('C:\Compilador\upx.exe', '::C:\Compilador\upx.exe') | Set-Content $_.FullName }"
+powershell -NoProfile -Command "Get-ChildItem 'C:\VERSOES_FECHADAS\379.48.2.30.72.438_CLOUD\comandosCMD' -Filter '*.bat' | ForEach-Object { $c = Get-Content $_.FullName; $c = $c.Replace('C:\Compilador\upx.exe', '::C:\Compilador\upx.exe'); Set-Content $_.FullName $c }"
 
 :END
 @ECHO OFF
