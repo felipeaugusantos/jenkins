@@ -764,8 +764,8 @@ xcopy /E /I /Y "C:\VERSOES_FECHADAS\379.48.2.30.72.438" "C:\VERSOES_FECHADAS\379
 :: Remove o arquivo de controle do build da versão CLOUD
 del /q "C:\VERSOES_FECHADAS\379.48.2.30.72.438_CLOUD\concluido.txt"
 
-:: Comenta o comando upx.exe e atualiza caminho nos .bat e .cmd da pasta CLOUD\comandosCMD
-powershell -NoProfile -Command "Get-ChildItem 'C:\VERSOES_FECHADAS\379.48.2.30.72.438_CLOUD\comandosCMD' | Where-Object { $_.Extension -eq '.bat' -or $_.Extension -eq '.cmd' } | ForEach-Object { $c = Get-Content $_.FullName; $c = $c.Replace('C:\Compilador\upx.exe', '::C:\Compilador\upx.exe'); $c = $c.Replace('C:\VERSOES_FECHADAS\379.48.2.30.72.438\', 'C:\VERSOES_FECHADAS\379.48.2.30.72.438_CLOUD\'); Set-Content $_.FullName $c }"
+:: Comenta o comando upx.exe e substitui todas as referencias a versao por _CLOUD nos .bat e .cmd
+powershell -NoProfile -Command "Get-ChildItem 'C:\VERSOES_FECHADAS\379.48.2.30.72.438_CLOUD\comandosCMD' | Where-Object { $_.Extension -eq '.bat' -or $_.Extension -eq '.cmd' } | ForEach-Object { $c = Get-Content $_.FullName; $c = $c.Replace('C:\Compilador\upx.exe', '::C:\Compilador\upx.exe'); $c = $c.Replace('379.48.2.30.72.438', '379.48.2.30.72.438_CLOUD'); Set-Content $_.FullName $c }"
 
 :: Executa configurações e inicia o sistema após compilação completa
 CALL C:\VERSOES_FECHADAS\379.48.2.30.72.438\comandosCMD\__RodarPrimeiro.bat
