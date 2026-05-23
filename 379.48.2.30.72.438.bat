@@ -755,11 +755,11 @@ copy /Y %WORKSPACE%\padra_atualizado\auttin\tintas\libTintaAlv.dll C:\VERSOES_FE
 
 echo concluido > C:\VERSOES_FECHADAS\379.48.2.30.72.438\concluido.txt
 
-:: Copia a pasta completa para a versão Cloud
-xcopy /E /I /Y "C:\VERSOES_FECHADAS\379.48.2.30.72.438" "C:\VERSOES_FECHADAS\379.48.2.30.72.438_Cloud\"
+:: Copia a pasta completa para a versão CLOUD
+xcopy /E /I /Y "C:\VERSOES_FECHADAS\379.48.2.30.72.438" "C:\VERSOES_FECHADAS\379.48.2.30.72.438_CLOUD\"
 
-:: Comenta o comando upx.exe nos .bat da pasta _Cloud\comandosCMD
-powershell -NoProfile -Command "Get-ChildItem 'C:\VERSOES_FECHADAS\379.48.2.30.72.438_Cloud\comandosCMD' -Filter '*.bat' | ForEach-Object { (Get-Content $_.FullName).Replace('C:\Compilador\upx.exe', '::C:\Compilador\upx.exe') | Set-Content $_.FullName }"
+:: Comenta o comando upx.exe nos .bat da pasta CLOUD\comandosCMD
+powershell -NoProfile -Command "Get-ChildItem 'C:\VERSOES_FECHADAS\379.48.2.30.72.438_CLOUD\comandosCMD' -Filter '*.bat' | ForEach-Object { (Get-Content $_.FullName).Replace('C:\Compilador\upx.exe', '::C:\Compilador\upx.exe') | Set-Content $_.FullName }"
 
 :END
 @ECHO OFF
