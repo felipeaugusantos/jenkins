@@ -1,8 +1,11 @@
+@ECHO OFF
 :: Deleta tudo da pasta antes de iniciar uma nova geração
-del C:\VERSOES_FECHADAS\379.48.2.30.72.438\*.* /q
+rd /s /q "C:\VERSOES_FECHADAS\379.48.2.30.72.438"
+mkdir "C:\VERSOES_FECHADAS\379.48.2.30.72.438"
 
 :: Faz o checkout através de linhas de comando do SVN
 svn checkout -q svn://srvprg1.citelsoftware.com.br/Padrao/027.18/27.18.379/379.48.02.REV.FECHADAs/379.48.02.30.FECHADAS/379.48.2.30.72.438 %WORKSPACE%
+IF NOT %ERRORLEVEL% == 0 GOTO END
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd Shared.Functions.dpk %WORKSPACE%\padra_atualizado\Packages\Shared\Functions\package\ %WORKSPACE%\padra_atualizado\
 IF NOT %ERRORLEVEL% == 0 GOTO END
@@ -51,27 +54,27 @@ copy /Y %WORKSPACE%\padra_atualizado\autcom.exe C:\VERSOES_FECHADAS\379.48.2.30.
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesAutcom %WORKSPACE%\libCartoes\libCentralizado\ %WORKSPACE%\libCartoes\libCentralizado\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libCartoesAutcom.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libCartoes\libCentralizado\libCartoesAutcom.dll
 copy /Y %WORKSPACE%\libCartoes\libCentralizado\libCartoesAutcom.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesRedeCard %WORKSPACE%\libCartoes\libCartoesRedeCard\ %WORKSPACE%\libCartoes\libCartoesRedeCard\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libCartoesRedeCard.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libCartoes\libCartoesRedeCard\libCartoesRedeCard.dll
 copy /Y %WORKSPACE%\libCartoes\libCartoesRedeCard\libCartoesRedeCard.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesSipag %WORKSPACE%\libCartoes\libCartoesSipag\ %WORKSPACE%\libCartoes\libCartoesSipag\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libCartoesSipag.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libCartoes\libCartoesSipag\libCartoesSipag.dll
 copy /Y %WORKSPACE%\libCartoes\libCartoesSipag\libCartoesSipag.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesStone %WORKSPACE%\libCartoes\libCartoesStone\ %WORKSPACE%\libCartoes\libCartoesStone\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libCartoesStone.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libCartoes\libCartoesStone\libCartoesStone.dll
 copy /Y %WORKSPACE%\libCartoes\libCartoesStone\libCartoesStone.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesMercadoLivre %WORKSPACE%\libCartoes\libCartoesMercadoLivre\ %WORKSPACE%\libCartoes\libCartoesMercadoLivre\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libCartoesMercadoLivre.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libCartoes\libCartoesMercadoLivre\libCartoesMercadoLivre.dll
 copy /Y %WORKSPACE%\libCartoes\libCartoesMercadoLivre\libCartoesMercadoLivre.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesShopee %WORKSPACE%\libCartoes\libCartoesShopee\ %WORKSPACE%\libCartoes\libCartoesShopee\
@@ -81,67 +84,67 @@ copy /Y %WORKSPACE%\libCartoes\libCartoesShopee\libCartoesShopee.dll C:\VERSOES_
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesPagSeguro %WORKSPACE%\libCartoes\libCartoesPagSeguro\ %WORKSPACE%\libCartoes\libCartoesPagSeguro\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libCartoesPagSeguro.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libCartoes\libCartoesPagSeguro\libCartoesPagSeguro.dll
 copy /Y %WORKSPACE%\libCartoes\libCartoesPagSeguro\libCartoesPagSeguro.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesYapay %WORKSPACE%\libCartoes\libCartoesYapay\ %WORKSPACE%\libCartoes\libCartoesYapay\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libCartoesYapay.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libCartoes\libCartoesYapay\libCartoesYapay.dll
 copy /Y %WORKSPACE%\libCartoes\libCartoesYapay\libCartoesYapay.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesCielo %WORKSPACE%\libCartoes\libCartoesCielo\ %WORKSPACE%\libCartoes\libCartoesCielo\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libCartoesCielo.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libCartoes\libCartoesCielo\libCartoesCielo.dll
 copy /Y %WORKSPACE%\libCartoes\libCartoesCielo\libCartoesCielo.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesSafrapay %WORKSPACE%\libCartoes\libCartoesSafrapay\ %WORKSPACE%\libCartoes\libCartoesSafrapay\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libCartoesSafrapay.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libCartoes\libCartoesSafrapay\libCartoesSafrapay.dll
 copy /Y %WORKSPACE%\libCartoes\libCartoesSafrapay\libCartoesSafrapay.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesMagazineLuiza %WORKSPACE%\libCartoes\libCartoesMagazineLuiza\ %WORKSPACE%\libCartoes\libCartoesMagazineLuiza\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libCartoesMagazineLuiza.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libCartoes\libCartoesMagazineLuiza\libCartoesMagazineLuiza.dll
 copy /Y %WORKSPACE%\libCartoes\libCartoesMagazineLuiza\libCartoesMagazineLuiza.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesSicredi %WORKSPACE%\libCartoes\libCartoesSicredi\ %WORKSPACE%\libCartoes\libCartoesSicredi\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libCartoesSicredi.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libCartoes\libCartoesSicredi\libCartoesSicredi.dll
 copy /Y %WORKSPACE%\libCartoes\libCartoesSicredi\libCartoesSicredi.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesGetnet %WORKSPACE%\libCartoes\libCartoesGetnet\ %WORKSPACE%\libCartoes\libCartoesGetnet\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libCartoesGetnet.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libCartoes\libCartoesGetnet\libCartoesGetnet.dll
 copy /Y %WORKSPACE%\libCartoes\libCartoesGetnet\libCartoesGetnet.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesFiservBin %WORKSPACE%\libCartoes\libCartoesFiservBin\ %WORKSPACE%\libCartoes\libCartoesFiservBin\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libCartoesFiservBin.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libCartoes\libCartoesFiservBin\libCartoesFiservBin.dll
 copy /Y %WORKSPACE%\libCartoes\libCartoesFiservBin\libCartoesFiservBin.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesEquals %WORKSPACE%\libCartoes\libCartoesEquals\ %WORKSPACE%\libCartoes\libCartoesEquals\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libCartoesEquals.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libCartoes\libCartoesEquals\libCartoesEquals.dll
 copy /Y %WORKSPACE%\libCartoes\libCartoesEquals\libCartoesEquals.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesPagarMe %WORKSPACE%\libCartoes\libCartoesPagarMe\ %WORKSPACE%\libCartoes\libCartoesPagarMe\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libCartoesPagarMe.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libCartoes\libCartoesPagarMe\libCartoesPagarMe.dll
 copy /Y %WORKSPACE%\libCartoes\libCartoesPagarMe\libCartoesPagarMe.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesBanrisul %WORKSPACE%\libCartoes\libCartoesBanrisul\ %WORKSPACE%\libCartoes\libCartoesBanrisul\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libCartoesBanrisul.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libCartoes\libCartoesBanrisul\libCartoesBanrisul.dll
 copy /Y %WORKSPACE%\libCartoes\libCartoesBanrisul\libCartoesBanrisul.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libCartoesB2W %WORKSPACE%\libCartoes\libCartoesB2W\ %WORKSPACE%\libCartoes\libCartoesB2W\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libCartoesB2W.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libCartoes\libCartoesB2W\libCartoesB2W.dll
 copy /Y %WORKSPACE%\libCartoes\libCartoesB2W\libCartoesB2W.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libIntegracaoContasBancarias %WORKSPACE%\libIntegracaoContasBancarias\ %WORKSPACE%\libIntegracaoContasBancarias\
 IF NOT %ERRORLEVEL% == 0 GOTO END
-C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\libIntegracaoContasBancarias.dll
+C:\Compilador\madExceptPatch.exe %WORKSPACE%\libIntegracaoContasBancarias\libIntegracaoContasBancarias.dll
 copy /Y %WORKSPACE%\libIntegracaoContasBancarias\libIntegracaoContasBancarias.dll C:\VERSOES_FECHADAS\379.48.2.30.72.438
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd libFuncoes %WORKSPACE%\padra_atualizado\fontes\libFuncoes\ %WORKSPACE%\padra_atualizado\
@@ -168,9 +171,6 @@ CALL C:\Compilador\ddcc32NovoDX10.cmd iLogMonitorSend %WORKSPACE%\padra_atualiza
 IF NOT %ERRORLEVEL% == 0 GOTO END
 C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\iLogMonitorSend.exe
 copy /Y %WORKSPACE%\padra_atualizado\iLogMonitorSend.exe C:\VERSOES_FECHADAS\379.48.2.30.72.438
-
-CALL C:\VERSOES_FECHADAS\379.48.2.30.72.438\comandosCMD\__RodarPrimeiro.bat;
-schtasks /run /tn 379.48.2.30.72.438_Principal;
 
 CALL C:\Compilador\ddcc32NovoDX10.cmd iLogMonitorStatus %WORKSPACE%\padra_atualizado\Monitors\iLogMonitor\Status\ %WORKSPACE%\padra_atualizado\
 IF NOT %ERRORLEVEL% == 0 GOTO END
@@ -756,15 +756,21 @@ copy /Y %WORKSPACE%\padra_atualizado\auttin\tintas\libTintaAlv.dll C:\VERSOES_FE
 echo concluido > C:\VERSOES_FECHADAS\379.48.2.30.72.438\concluido.txt
 
 :: Copia a pasta completa para a versão CLOUD
+rd /s /q "C:\VERSOES_FECHADAS\379.48.2.30.72.438_CLOUD"
 xcopy /E /I /Y "C:\VERSOES_FECHADAS\379.48.2.30.72.438" "C:\VERSOES_FECHADAS\379.48.2.30.72.438_CLOUD\"
+
+:: Remove o arquivo de controle do build da versão CLOUD
+del /q "C:\VERSOES_FECHADAS\379.48.2.30.72.438_CLOUD\concluido.txt"
 
 :: Comenta o comando upx.exe e atualiza caminho nos .bat e .cmd da pasta CLOUD\comandosCMD
 powershell -NoProfile -Command "Get-ChildItem 'C:\VERSOES_FECHADAS\379.48.2.30.72.438_CLOUD\comandosCMD' | Where-Object { $_.Extension -eq '.bat' -or $_.Extension -eq '.cmd' } | ForEach-Object { $c = Get-Content $_.FullName; $c = $c.Replace('C:\Compilador\upx.exe', '::C:\Compilador\upx.exe'); $c = $c.Replace('C:\VERSOES_FECHADAS\379.48.2.30.72.438\', 'C:\VERSOES_FECHADAS\379.48.2.30.72.438_CLOUD\'); Set-Content $_.FullName $c }"
 
+:: Executa configurações e inicia o sistema após compilação completa
+CALL C:\VERSOES_FECHADAS\379.48.2.30.72.438\comandosCMD\__RodarPrimeiro.bat
+schtasks /run /tn 379.48.2.30.72.438_Principal
+
 :END
-@ECHO OFF
 if not exist "C:\VERSOES_FECHADAS\379.48.2.30.72.438\concluido.txt" (
 	java -jar "C:\Utilitarios\JenkinsJar\jenkins-cli.jar" -s http://localhost:8080/ console 379.48.2.30.72.438 -n 20 > C:\VERSOES_FECHADAS\379.48.2.30.72.438\erro.txt
-
 	EXIT /b 1
 )
