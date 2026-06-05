@@ -829,7 +829,6 @@ xcopy /E /I /Y "C:\VERSOES_FECHADAS\379.48.2.30.74.150.95" "C:\VERSOES_FECHADAS\
 :: Remove o arquivo de controle do build da versão CLOUD
 del /q "C:\VERSOES_FECHADAS\379.48.2.30.74.150.95_CLOUD\concluido.txt"
 del /q "C:\VERSOES_FECHADAS\379.48.2.30.74.150.95_CLOUD\codetrace_resultado.txt"
-del /q "C:\VERSOES_FECHADAS\379.48.2.30.74.150.95\concluido.txt"
 del /q "C:\VERSOES_FECHADAS\379.48.2.30.74.150.95\codetrace_resultado.txt"
 
 :: Comenta o comando upx.exe e substitui todas as referencias a versao por _CLOUD nos .bat e .cmd
