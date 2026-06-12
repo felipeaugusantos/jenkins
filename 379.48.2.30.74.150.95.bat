@@ -820,8 +820,6 @@ C:\Compilador\madExceptPatch.exe %WORKSPACE%\padra_atualizado\auttin\tintas\libT
 copy /Y %WORKSPACE%\padra_atualizado\auttin\tintas\libTintaAlv.dll C:\VERSOES_FECHADAS\379.48.2.30.74.150.95
 
 
-echo concluido > C:\VERSOES_FECHADAS\379.48.2.30.74.150.95\concluido.txt
-
 :: Copia a pasta completa para a versão CLOUD
 rd /s /q "C:\VERSOES_FECHADAS\379.48.2.30.74.150.95_CLOUD"
 xcopy /E /I /Y "C:\VERSOES_FECHADAS\379.48.2.30.74.150.95" "C:\VERSOES_FECHADAS\379.48.2.30.74.150.95_CLOUD\"
@@ -842,6 +840,8 @@ schtasks /run /tn 379.48.2.30.74.150.95_Principal
 :: Executa configurações e inicia o sistema da versão CLOUD
 CALL C:\VERSOES_FECHADAS\379.48.2.30.74.150.95_CLOUD\comandosCMD\__RodarPrimeiro.bat
 schtasks /run /tn 379.48.2.30.74.150.95_CLOUD_Principal
+
+echo concluido > C:\VERSOES_FECHADAS\379.48.2.30.74.150.95\concluido.txt
 
 :END
 @ECHO OFF
