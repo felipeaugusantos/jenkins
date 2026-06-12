@@ -769,14 +769,6 @@ del /q "C:\VERSOES_FECHADAS\379.48.2.30.74.111.154_CLOUD\concluido.txt"
 powershell -NoProfile -Command "if (Test-Path 'C:\VERSOES_FECHADAS\379.48.2.30.74.111.154_CLOUD\comandosCMD') { Get-ChildItem 'C:\VERSOES_FECHADAS\379.48.2.30.74.111.154_CLOUD\comandosCMD' | Where-Object { $_.Extension -eq '.bat' -or $_.Extension -eq '.cmd' } | ForEach-Object { $c = Get-Content $_.FullName; $c = $c.Replace('C:\Compilador\upx.exe', '::C:\Compilador\upx.exe'); $c = $c.Replace('379.48.2.30.74.111.154', '379.48.2.30.74.111.154_CLOUD'); Set-Content $_.FullName $c } }"
 
 
-:: Executa configurações e inicia o sistema após compilação completa
-CALL C:\VERSOES_FECHADAS\379.48.2.30.74.111.154\comandosCMD\__RodarPrimeiro.bat
-schtasks /run /tn 379.48.2.30.74.111.154_Principal
-
-:: Executa configurações e inicia o sistema da versão CLOUD
-CALL C:\VERSOES_FECHADAS\379.48.2.30.74.111.154_CLOUD\comandosCMD\__RodarPrimeiro.bat
-schtasks /run /tn 379.48.2.30.74.111.154_CLOUD_Principal
-
 echo concluido > C:\VERSOES_FECHADAS\379.48.2.30.74.111.154\concluido.txt
 
 :END
